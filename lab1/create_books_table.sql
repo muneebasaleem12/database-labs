@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS books_read;
+
+CREATE TABLE books_read (
+    book_id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    category VARCHAR(50),
+    pages INTEGER CHECK (pages > 0),
+    date_finished DATE,
+    rating DECIMAL(3,1) CHECK (rating >= 0 AND rating <= 5.0),
+    notes TEXT
+);
+
+
+INSERT INTO books_read (title, author, category, pages, date_finished, rating, notes) VALUES
+('Python for Data Analysis', 'Wes McKinney', 'Data Science', 544, '2024-08-15', 4.5, 'Great for pandas library'),
+('Clean Code', 'Robert C. Martin', 'Programming', 464, '2024-12-01', 4.0, 'Good coding practices'),
+('Machine Learning Book', 'Andriy Burkov', 'Machine Learning', 160, '2024-10-05', 4.2, 'ML overview'),
+('Statistics 101', 'Richard McElreath', 'Statistics', 593, '2024-11-12', 4.8, 'Bayesian approach'),
+('Database Systems', 'Kleppmann', 'Databases', 616, '2024-09-20', 5.0, 'Must read');
